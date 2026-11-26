@@ -31,6 +31,13 @@ const errorEl = document.getElementById("error");
  */
 async function fetchMedicines() {
     // TODO: fetch(`${BASE_URL}/medicines`), check response.ok, return the data.
+    badList = fetch(`${BASE_URL}/medicines`)
+    cleanList = {}
+    for (var i = 0; i < badList.length; ++i){
+        if (badList[i] != null || badList[i] != ""){
+            cleanList.push(badlist[i])
+        }
+    }
 }
 
 /**
@@ -43,6 +50,7 @@ function renderMedicines(data) {
     // TODO: build a table (the .results styles expect a <table>), iterate the
     // records, and render each row safely. Use the .invalid class to flag bad
     // values if you like.
+    // resultsEl.
 }
 
 /**
@@ -59,6 +67,9 @@ async function fetchUnreliable() {
 document.getElementById("load-medicines").addEventListener("click", async () => {
     // TODO: call fetchMedicines() then renderMedicines(data),
     // showing #loading and clearing #error appropriately.
+    medicines = fetchMedicines()
+    renderMedicines(medicines)
+
 });
 
 document.getElementById("load-unreliable").addEventListener("click", async () => {
